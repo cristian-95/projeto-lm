@@ -43,7 +43,7 @@ void multiplicaMatriz(int r[L][L], int A[L][L], int B[L][L]){
     }
 }
 
-void multiplicaMatrizComEscalar(int r[L][L], int num){
+void multiplicaMatrizComEscalar(int r[L][L]){
     int i, j;
  
     for(i=0; i<L; i++){
@@ -103,8 +103,8 @@ int main(){
         printf("Matriz R = A x B\nR:\n");
         printMatriz(R);
     
-        multiplicaMatrizComEscalar(R,4);
-        printf("4 * R:\n");
+        multiplicaMatrizComEscalar(R);
+        printf("%d * R:\n",ESCALAR);
         printMatriz(R);
 
         max = maxDiagonal(R);
@@ -132,8 +132,8 @@ int main(){
         printf("Matriz R = A x B\nR:\n");
         printMatriz(R);
     
-        multiplicaMatrizComEscalar(R,4);
-        printf("4 * R:\n");
+        multiplicaMatrizComEscalar(R);
+        printf("%d * R:\n",ESCALAR);
         printMatriz(R);
 
         //max = projeto_lm_nasm(L, A, B, R);        
