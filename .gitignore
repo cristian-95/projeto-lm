@@ -1,0 +1,4 @@
+# formatos ignorados:
+*.out
+*.o
+*.exe
