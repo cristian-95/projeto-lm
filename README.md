@@ -20,7 +20,7 @@ gcc -m32 -o projeto_lm.out projeto_lm.c projeto_lm_nasm.o
 
 ### Em um arquivo .asm: 
 
-- [ ] Retornar um numero para teste de stack-frame  
+- [x] Retornar um numero para teste de stack-frame  
 
 - [ ] Acesso a índice M[i][j] (macro)  
 
