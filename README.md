@@ -22,6 +22,8 @@ gcc -m32 -o projeto_lm.out projeto_lm.c projeto_lm_nasm.o
 
 - [x] Retornar um numero para teste de stack-frame  
 
+- [ ] Acessar um elemento da matriz e retornar
+
 - [ ] Acesso a índice M[i][j] (macro)  
 
 - [ ] Maior valor da diagonal (macro)
