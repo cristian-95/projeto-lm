@@ -1,8 +1,10 @@
-/* PROJETO FINAL DE LINGUAGENS DE MOTANGEM - 2022
+/* PROJETO FINAL DE LINGUAGENS DE MONTAGEM - 2022
  * Grupo 3: 4(A x B) retornando o maior valor da diagonal principal.
  *  GABRIEL FRANCISCO HABERMANN
  *  CRISTIAN SANTOS DE CASTRO
  *  IGNACIO ALFREDO SAVI GUALCO
+ * 
+ *  OBS: CODIGO COMENTADO PARA FINS DE TESTE
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -15,7 +17,7 @@ const int L = 3;
 
 /*  Funções externas:   */
 
-extern int projeto_lm_nasm(int, int*, int*, int*);
+extern int projeto_lm_nasm(int);
 
 /* Funções auxiliares:  */
 
@@ -81,67 +83,69 @@ void zeraMatriz(int M[L][L]){
 }
 
 int main(){
-    srand(time(NULL)); // semente para funcao rand gerar numeros diferentes
-    int A[L][L];
-    int B[L][L];
-    int R[L][L];
+    //srand(time(NULL)); // semente para funcao rand gerar numeros diferentes
+    //int A[L][L];
+    //int B[L][L];
+    //int R[L][L];
     int max=0;
-    clock_t cTime;
-    clock_t asmTime;
+    //clock_t cTime;
+    //clock_t asmTime;
+    /*
     
     // Execução em C:
-    cTime = clock();
-        geraMatriz(A);
-        geraMatriz(B);
+    // cTime = clock();
+    //     geraMatriz(A);
+    //     geraMatriz(B);
     
-        printf("Matriz A:\n");
-        printMatriz(A);    
-        printf("Matriz B:\n");
-        printMatriz(B);
+    //     printf("Matriz A:\n");
+    //     printMatriz(A);    
+    //     printf("Matriz B:\n");
+    //     printMatriz(B);
 
-        multiplicaMatriz(R,A,B);
-        printf("Matriz R = A x B\nR:\n");
-        printMatriz(R);
+    //     multiplicaMatriz(R,A,B);
+    //     printf("Matriz R = A x B\nR:\n");
+    //     printMatriz(R);
     
-        multiplicaMatrizComEscalar(R);
-        printf("%d * R:\n",ESCALAR);
-        printMatriz(R);
+    //     multiplicaMatrizComEscalar(R);
+    //     printf("%d * R:\n",ESCALAR);
+    //     printMatriz(R);
 
-        max = maxDiagonal(R);
+    //     max = maxDiagonal(R);
 
-        printf("Maior valor da diagonal principal [C]: %d\n\n",max);
-    cTime = clock() - cTime;
+    //     printf("Maior valor da diagonal principal [C]: %d\n\n",max);
+    // cTime = clock() - cTime;
 
-    // zera variaveis:
-    zeraMatriz(A);
-    zeraMatriz(B);
-    zeraMatriz(R);
-    max = 0;
+    // // zera variaveis:
+    // zeraMatriz(A);
+    // zeraMatriz(B);
+    // zeraMatriz(R);
+    // max = 0;
 
     // Execução em Assembly:
     asmTime = clock();
-        geraMatriz(A);
-        geraMatriz(B);
+        // geraMatriz(A);
+        // geraMatriz(B);
     
-        printf("Matriz A:\n");
-        printMatriz(A);    
-        printf("Matriz B:\n");
-        printMatriz(B);
+        // printf("Matriz A:\n");
+        // printMatriz(A);    
+        // printf("Matriz B:\n");
+        // printMatriz(B);
 
-        multiplicaMatriz(R,A,B);
-        printf("Matriz R = A x B\nR:\n");
-        printMatriz(R);
+        // multiplicaMatriz(R,A,B);
+        // printf("Matriz R = A x B\nR:\n");
+        // printMatriz(R);
     
-        multiplicaMatrizComEscalar(R);
-        printf("%d * R:\n",ESCALAR);
-        printMatriz(R);
+        // multiplicaMatrizComEscalar(R);
+        // printf("%d * R:\n",ESCALAR);
+        // printMatriz(R);
+        */
 
-        //max = projeto_lm_nasm(L, A, B, R);        
-        //printf("Maior valor da diagonal principal [C]: %d\n",max);
-    asmTime = clock() - asmTime;
+        max = projeto_lm_nasm(L);        
+        printf("Maior valor da diagonal principal [ASM]: %d\n",max);
+    //asmTime = clock() - asmTime;
 
     // SAIDA
-    //printf("Tempo de execução [ASM]: %.2f ms\n",((double)asmTime));
-    printf("Tempo de execução [C]: %.2f ms\n",((double)cTime));
+//    printf("Tempo de execução [ASM]: %.2f ms\n",((double)asmTime));
+    //printf("Tempo de execução [C]: %.2f ms\n",((double)cTime));
     return 0;
 }
