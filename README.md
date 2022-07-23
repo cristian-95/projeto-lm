@@ -24,7 +24,7 @@ gcc -m32 -o projeto_lm.out projeto_lm.c projeto_lm_nasm.o
 
 - [x] Acessar um elemento da matriz e retornar
 
-- [ ] Acesso a índice M[i][j] (macro)  
+- [ ] Acesso a índice M[i][j] (macro em progresso)  
 
 - [ ] Maior valor da diagonal (macro)
 
