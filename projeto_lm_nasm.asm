@@ -9,16 +9,18 @@
     SECTION .text
     global projeto_lm_nasm
 
-
-;; teste primario para retornar apenas o tamanho da matriz multiplicado por 2:
-
-
 projeto_lm_nasm:
-        push ebp
-        mov ebp,esp
-        mov eax,[ebp+8]
-        add eax,eax
-        mov esp,ebp
-        pop ebp
-        ret
-        ; estrutura copiada do exemplo sum.asm da AULA 8
+
+    push ebp
+    mov ebp,esp
+        
+    mov   ecx, [ebp+8]      ;; ecx tem o endereço de A[0][0]
+    mov   edx, [ebp+12]     ;; edx tem o endereço de B[0][0]
+    mov   eax, [ecx]        ;; eax = A[0][0]
+    add   eax, [ecx+4]      ;; eax += A[0][1]
+    add   eax, [ecx+8]      ;; eax += A[1][0]
+    add   eax, [ecx+12]     ;; eax += A[1][1]
+        
+    mov esp,ebp
+    pop ebp
+    ret
