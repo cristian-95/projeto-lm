@@ -17,7 +17,7 @@ const int L = 2;
 
 /*  Funções externas:   */
 
-extern int projeto_lm_nasm(int *, int *);  //  isso resolveu os warnings
+extern int projeto_lm_nasm(int *,int,int,int);  //  isso resolveu os warnings
 
 /* Funções auxiliares:  */
 
@@ -83,6 +83,7 @@ void zeraMatriz(int M[L][L]){
 }
 
 int main(){
+    int i=0, j=1;  // criado para testar a macro de acesso a indice ij
     srand(time(NULL)); // semente para funcao rand gerar numeros diferentes
     int A[L][L];
     int B[L][L];
@@ -118,21 +119,31 @@ int main(){
     // // zera variaveis:
     // zeraMatriz(A);
     // zeraMatriz(R);
+    // zeraMatriz(B);
     // max = 0;
 
     // Execução em Assembly:
     //asmTime = clock();
         geraMatriz(A);
-        zeraMatriz(B);
         //geraMatriz(B);
         printf("Matriz A:\n");
         printMatriz(A);    
-        printf("Matriz B:\n");
-        printMatriz(B);
+
+        // 
+
+        // printf("Matriz B:\n");
+        // printMatriz(B);
         
+        /* testes: */
+        // printf("i = ");
+        // scanf("%d ", &i);
+        // printf("j = ");
+        // scanf("%d ", &j);
+
+        max = (int) projeto_lm_nasm(*A,i,j,L);        
         
-        max = (int) projeto_lm_nasm(*A,*B);        
-        printf("TESTE: soma dos elementos de A = %d\n",max);
+        printf("TESTE: elemento na posição [%d][%d] de A = %d\n",i,j,max);
+        
        // printf("Maior valor da diagonal principal [ASM]: %d\n",max);
        
     //asmTime = clock() - asmTime;
