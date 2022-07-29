@@ -83,7 +83,7 @@ void zeraMatriz(int M[L][L]){
 }
 
 int main(){
-    int i=0, j=1;  // criado para testar a macro de acesso a indice ij
+    int i=1, j=0;  // criado para testar a macro de acesso a indice ij
     srand(time(NULL)); // semente para funcao rand gerar numeros diferentes
     int A[L][L];
     int B[L][L];
@@ -140,7 +140,7 @@ int main(){
         // printf("j = ");
         // scanf("%d ", &j);
 
-        max = (int) projeto_lm_nasm(*A,i,j,L);        
+        max = projeto_lm_nasm(*A,i,j,L);        
         
         printf("TESTE: elemento na posição [%d][%d] de A = %d\n",i,j,max);
         
