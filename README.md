@@ -24,7 +24,9 @@ gcc -m32 -o projeto_lm.out projeto_lm.c projeto_lm_nasm.o
 
 - [x] Acessar um elemento da matriz e retornar
 
-- [ ] Acesso a índice M[i][j] (macro em progresso)  
+- [x] Acesso a índice M[i][j] (macro)  
+
+- [ ] Loops de multiplicação (indices i, j e k)
 
 - [ ] Maior valor da diagonal (macro)
 
@@ -74,4 +76,24 @@ prototipo da função: ```extern int projeto_lm_nasm(int);```
     mov esp,ebp
     pop ebp
     ret
+```
+
+Teste: macro que retorna um elemento em dado indice i e j
+
+Prototipo da função: ```extern int projeto_lm_nasm(int *,int,int,int); ```
+```
+    %macro acessa_matriz 3
+        mov edx, %1      ; &matriz
+        mov eax, %2     ; i
+        mov ecx, %3     ; j
+        
+        mul L           ; i*d
+        add eax,ecx     ; (i*d)+j
+        mov ecx, INT_SIZE
+        mul ecx         ; (((i*d)+j)*4)
+        
+        mov ecx, %1     ; ecx aponta para  indice[0][0] da matriz
+        add ecx, eax    ; ecx aponta para indice[i][j] da matriz
+        mov eax, [ecx]  ; move o CONTEUDO apontado por ecx para eax    
+    %endmacro
 ```
