@@ -16,8 +16,7 @@ const int ESCALAR = 4;
 const int L = 3;
 
 /*  Funções externas:   */
-
-extern int projeto_lm_nasm(int *,int *,int *,int);
+extern int projeto_lm_nasm(int *,int *,int *,int,int);
 
 /* Funções auxiliares:  */
 
@@ -113,10 +112,10 @@ int main(){
 
     /* Zera variaveis: */
     // zeraMatriz(A);
-    // zeraMatriz(R);
     // zeraMatriz(B);
     // max = 0;
 
+    //zeraMatriz(R);
     geraMatriz(A);
     geraMatriz(B);
         
@@ -127,9 +126,11 @@ int main(){
         
     /* Execução em Assembly: */
     asmTime = clock();
-        max = projeto_lm_nasm(*A,*B,*R,L);                
+        max = projeto_lm_nasm(*A,*B,*R,L,ESCALAR);                
     asmTime = clock() - asmTime;
     printf("Maior valor da diagonal principal [ASM]: %d\n",max);       
+    printf("Matriz R:\n");
+    printMatriz(R);
 
     //printf("Tempo de execução [C]: %.2f ms\n",((double)cTime));
     printf("Tempo de execução [ASM]: %.2f ms\n",((double)asmTime));
