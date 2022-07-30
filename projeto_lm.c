@@ -13,11 +13,11 @@
 /* Constantes:   */
 
 const int ESCALAR = 4;
-const int L = 2;
+const int L = 3;
 
 /*  Funções externas:   */
 
-extern int projeto_lm_nasm(int *,int,int,int);  //  isso resolveu os warnings
+extern int projeto_lm_nasm(int *,int *,int *,int);
 
 /* Funções auxiliares:  */
 
@@ -83,73 +83,55 @@ void zeraMatriz(int M[L][L]){
 }
 
 int main(){
-    int i=1, j=0;  // criado para testar a macro de acesso a indice ij
     srand(time(NULL)); // semente para funcao rand gerar numeros diferentes
     int A[L][L];
     int B[L][L];
-    //int R[L][L];
+    int R[L][L];
     int max=0;
-    //clock_t cTime;
-    //clock_t asmTime;
+    clock_t cTime;
+    clock_t asmTime;
     
     
-    // Execução em C:
-    // cTime = clock();
-    //     geraMatriz(A);
-    //     geraMatriz(B);
+    //geraMatriz(A);
+    //geraMatriz(B);
     
-    //     printf("Matriz A:\n");
-    //     printMatriz(A);    
-    //     printf("Matriz B:\n");
-    //     printMatriz(B);
+    //printf("Matriz A:\n");
+    //printMatriz(A);    
+    //printf("Matriz B:\n");
+//printMatriz(B);
 
+    /* Execução em C: */
+    //cTime = clock();
     //     multiplicaMatriz(R,A,B);
-    //     printf("Matriz R = A x B\nR:\n");
-    //     printMatriz(R);
-    
     //     multiplicaMatrizComEscalar(R);
-    //     printf("%d * R:\n",ESCALAR);
-    //     printMatriz(R);
-
     //     max = maxDiagonal(R);
+    //cTime = clock() - cTime;
+    
+    //printf("Matriz R:\n");
+    //printMatriz(R);
+    //printf("Maior valor da diagonal principal [C]: %d\n\n",max);
 
-    //     printf("Maior valor da diagonal principal [C]: %d\n\n",max);
-    // cTime = clock() - cTime;
-
-    // // zera variaveis:
+    /* Zera variaveis: */
     // zeraMatriz(A);
     // zeraMatriz(R);
     // zeraMatriz(B);
     // max = 0;
 
-    // Execução em Assembly:
-    //asmTime = clock();
-        geraMatriz(A);
-        //geraMatriz(B);
-        printf("Matriz A:\n");
-        printMatriz(A);    
-
-        // 
-
-        // printf("Matriz B:\n");
-        // printMatriz(B);
+    geraMatriz(A);
+    geraMatriz(B);
         
-        /* testes: */
-        // printf("i = ");
-        // scanf("%d ", &i);
-        // printf("j = ");
-        // scanf("%d ", &j);
-
-        max = projeto_lm_nasm(*A,i,j,L);        
+    printf("Matriz A:\n");
+    printMatriz(A);    
+    printf("Matriz B:\n");
+    printMatriz(B);
         
-        printf("TESTE: elemento na posição [%d][%d] de A = %d\n",i,j,max);
-        
-       // printf("Maior valor da diagonal principal [ASM]: %d\n",max);
-       
-    //asmTime = clock() - asmTime;
+    /* Execução em Assembly: */
+    asmTime = clock();
+        max = projeto_lm_nasm(*A,*B,*R,L);                
+    asmTime = clock() - asmTime;
+    printf("Maior valor da diagonal principal [ASM]: %d\n",max);       
 
-    // SAIDA
-//    printf("Tempo de execução [ASM]: %.2f ms\n",((double)asmTime));
     //printf("Tempo de execução [C]: %.2f ms\n",((double)cTime));
+    printf("Tempo de execução [ASM]: %.2f ms\n",((double)asmTime));
     return 0;
 }
