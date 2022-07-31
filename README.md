@@ -26,11 +26,11 @@ gcc -m32 -o projeto_lm.out projeto_lm.c projeto_lm_nasm.o
 
 - [x] Acesso a índice M[i][j] (macro)  
 
-- [ ] Loops de multiplicação (indices i, j e k)
+- [x] Loops de multiplicação (indices i, j e k) EM PROGRESSO
 
 - [ ] Maior valor da diagonal (macro)
 
-- [ ] Comentar código  
+- [x] Comentar código EM PROGRESSO  
 
 - [ ]  Traduzir para sintaxe gas
 
@@ -83,17 +83,15 @@ Teste: macro que retorna um elemento em dado indice i e j
 Prototipo da função: ```extern int projeto_lm_nasm(int *,int,int,int); ```
 ```
     %macro acessa_matriz 3
-        mov edx, %1      ; &matriz
-        mov eax, %2     ; i
-        mov ecx, %3     ; j
-        
+        mov eax,%2      ; i
         mul L           ; i*d
-        add eax,ecx     ; (i*d)+j
-        mov ecx, INT_SIZE
-        mul ecx         ; (((i*d)+j)*4)
+        mov ebx, %3     ; j
+        add eax, ebx    ; (i*d)+j
+        mul INT_SIZE    ; ((i*d)+j)*4
         
-        mov ecx, %1     ; ecx aponta para  indice[0][0] da matriz
-        add ecx, eax    ; ecx aponta para indice[i][j] da matriz
-        mov eax, [ecx]  ; move o CONTEUDO apontado por ecx para eax    
+        mov ebx,%1      ; ebx = &matriz
+        
+        add ebx, eax    ; ebx = &matriz[i][j]
+        mov eax,[ebx]   ; eax = *matriz[i][j]
     %endmacro
 ```

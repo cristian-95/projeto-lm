@@ -2,3 +2,6 @@
 *.out
 *.o
 *.exe
+
+#pastas:
+.vscode
