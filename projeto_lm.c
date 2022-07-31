@@ -98,10 +98,11 @@ int main(){
     printMatriz(A);    
     printf("Matriz B:\n");
     printMatriz(B);
+    
     /* Execução em C: */
     cTime = clock();
         multiplicaMatriz(R,A,B);
-        //multiplicaMatrizComEscalar(R);
+        multiplicaMatrizComEscalar(R);
         max = maxDiagonal(R);
     cTime = clock() - cTime;
     
@@ -109,19 +110,20 @@ int main(){
     printMatriz(R);
     printf("Maior valor da diagonal principal [C]: %d\n\n",max);
 
-
     /* Zera variaveis: */
     max = 0;
     zeraMatriz(R);
     printf("\n***********\nMatriz R zerada:\n");
     printMatriz(R);
+    
     /* Execução em Assembly: */
     asmTime = clock();
         max = projeto_lm_nasm(*A,*B,*R,L,ESCALAR);                
     asmTime = clock() - asmTime;
-    printf("Maior valor da diagonal principal [ASM]: %d\n",max);       
+
     printf("Matriz R:\n");
     printMatriz(R);
+    printf("Maior valor da diagonal principal [ASM]: %d\n",max);       
 
     printf("Tempo de execução [C]: %.3f ms\n",((double)cTime));
     printf("Tempo de execução [ASM]: %.3f ms\n",((double)asmTime));
