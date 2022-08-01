@@ -13,7 +13,7 @@
 /* Constantes:   */
 
 const int ESCALAR = 4;
-const int L = 2;
+const int L = 5;
 
 /*  Funções externas:   */
 extern int projeto_lm_nasm(int *,int *,int *,int,int);
@@ -25,7 +25,7 @@ void geraMatriz(int m[L][L]){
     
     for (i=0; i<L; i++){
         for (j=0; j<L; j++){
-            num = i+j+1;
+            num = rand()%10+1; // gera numeros de numeros de 1 a 10            
             m[i][j] = num;
         }
     }    

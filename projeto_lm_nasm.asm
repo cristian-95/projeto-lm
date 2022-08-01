@@ -62,10 +62,20 @@ projeto_lm_nasm:
     mov i, 0                              ; inicializa i = 0
     for_i_body:               
         mov j, 0                          ; inicializa j = 0
+        mov ecx, i    
+        cmp ecx, L                               ; compara i e L 
+        jge max_diagonal
         for_j_body:            
+            mov ecx, j        
+            cmp ecx, L                          ; compara j e L 
+            jge for_i_cond
+
             mov k, 0                      ; inicializa k = 0
             mov edi,0                     ; zera o acumulador antes de adentrar o loop k
             for_k_body:
+                mov ecx, k    
+                cmp ecx, L                     ; compara k e L 
+                jge for_j_cond
 
                 acessa_matriz  A, i, k          ; eax = A[i][k]
                 mov  edx, eax                   ; edx = A[i][k]
@@ -77,9 +87,6 @@ projeto_lm_nasm:
                 add edi, eax
 
             for_k_cond:
-                mov ecx, k    
-                cmp ecx, L                     ; compara k e L 
-                jge for_j_cond
                 inc k
                 jmp for_k_body
 
@@ -91,16 +98,10 @@ projeto_lm_nasm:
             acessa_matriz R, i, j
             mov [ebx], edi                      ; armazena o resultado na matriz
             
-            mov ecx, j        
-            cmp ecx, L                          ; compara j e L 
-            jge for_i_cond
             inc j
             jmp for_j_body
 
     for_i_cond:
-        mov ecx, i    
-        cmp L, ecx                               ; compara i e L 
-        je max_diagonal
         inc i
         jmp for_i_body
 max_diagonal:
