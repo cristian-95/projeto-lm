@@ -3,8 +3,6 @@
  *  GABRIEL FRANCISCO HABERMANN
  *  CRISTIAN SANTOS DE CASTRO
  *  IGNACIO ALFREDO SAVI GUALCO
- * 
- *  OBS: CODIGO COMENTADO PARA FINS DE TESTE
  */
 #include<stdio.h>
 #include<stdlib.h>
@@ -13,10 +11,11 @@
 /* Constantes:   */
 
 const int ESCALAR = 4;
-const int L = 2;
+const int L = 3;
 
 /*  Funções externas:   */
-extern int projeto_lm_nasm(int *,int *,int *,int,int);
+
+extern int projeto_lm_nasm(int *,int *,int *,int, int);
 
 /* Funções auxiliares:  */
 
@@ -100,6 +99,7 @@ int main(){
     printMatriz(B);
     
     /* Execução em C: */
+    printf("\n**** C *******\n\n");
     cTime = clock();
         multiplicaMatriz(R,A,B);
         multiplicaMatrizComEscalar(R);
@@ -113,10 +113,9 @@ int main(){
     /* Zera variaveis: */
     max = 0;
     zeraMatriz(R);
-    printf("\n***********\nMatriz R zerada:\n");
-    printMatriz(R);
-    
+        
     /* Execução em Assembly: */
+    printf("\n**** ASSEMBLY NASM *******\n\n");
     asmTime = clock();
         max = projeto_lm_nasm(*A,*B,*R,L,ESCALAR);                
     asmTime = clock() - asmTime;
@@ -125,7 +124,7 @@ int main(){
     printMatriz(R);
     printf("Maior valor da diagonal principal [ASM]: %d\n",max);       
 
-    printf("Tempo de execução [C]: %.3f ms\n",((double)cTime));
-    printf("Tempo de execução [ASM]: %.3f ms\n",((double)asmTime));
+    printf("\nTempo de execução [C]: %.2f ms\n",((double)cTime));
+    printf("Tempo de execução [ASM]: %.2f ms\n",((double)asmTime));
     return 0;
 }
