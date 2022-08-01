@@ -13,7 +13,7 @@
 /* Constantes:   */
 
 const int ESCALAR = 4;
-const int L = 5;
+const int L = 2;
 
 /*  Funções externas:   */
 extern int projeto_lm_nasm(int *,int *,int *,int,int);

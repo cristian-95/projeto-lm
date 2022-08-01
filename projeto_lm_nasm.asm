@@ -59,23 +59,23 @@ projeto_lm_nasm:
     push ebx
     mov INT_SIZE,4
     
-    mov i, 0                              ; inicializa i = 0
-    for_i_body:               
-        mov j, 0                          ; inicializa j = 0
+    mov i, 0                                     ; inicializa i = 0
+    for_i_begin:               
         mov ecx, i    
         cmp ecx, L                               ; compara i e L 
         jge max_diagonal
-        for_j_body:            
+        mov j, 0                                 ; inicializa j = 0
+        for_j_begin:            
             mov ecx, j        
-            cmp ecx, L                          ; compara j e L 
-            jge for_i_cond
+            cmp ecx, L                           ; compara j e L 
+            jge for_i_end
 
-            mov k, 0                      ; inicializa k = 0
-            mov edi,0                     ; zera o acumulador antes de adentrar o loop k
-            for_k_body:
+            mov k, 0                             ; inicializa k = 0
+            mov edi,0                            ; zera o acumulador antes de adentrar o loop k
+            for_k:
                 mov ecx, k    
-                cmp ecx, L                     ; compara k e L 
-                jge for_j_cond
+                cmp ecx, L                       ; compara k e L 
+                jge for_j_end
 
                 acessa_matriz  A, i, k          ; eax = A[i][k]
                 mov  edx, eax                   ; edx = A[i][k]
@@ -86,11 +86,10 @@ projeto_lm_nasm:
                 mul edx                         ; eax = A[i][k] * B[k][j]
                 add edi, eax
 
-            for_k_cond:
                 inc k
-                jmp for_k_body
+                jmp for_k
 
-        for_j_cond:
+        for_j_end:
         ; Multiplica por ESCALAR antes de armazenar na matriz: 
             mov eax, ESCALAR
             mul edi
@@ -99,11 +98,11 @@ projeto_lm_nasm:
             mov [ebx], edi                      ; armazena o resultado na matriz
             
             inc j
-            jmp for_j_body
+            jmp for_j_begin
 
-    for_i_cond:
+    for_i_end:
         inc i
-        jmp for_i_body
+        jmp for_i_begin
 max_diagonal:
   
 fim:
