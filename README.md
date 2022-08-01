@@ -20,24 +20,23 @@ gcc -m32 -o projeto_lm.out projeto_lm.c projeto_lm_nasm.o
 
 ### Em um arquivo .asm: 
 
+- [ ]  Traduzir para sintaxe gas
+
 - [x] Retornar um numero para teste de stack-frame  
 
 - [x] Acessar um elemento da matriz e retornar
 
 - [x] Acesso a índice M[i][j] (macro)  
 
-- [x] Loops de multiplicação (indices i, j e k) EM PROGRESSO
+- [x] Loops de multiplicação (indices i, j e k)
 
-- [ ] Maior valor da diagonal (macro)
+- [X] Maior valor da diagonal --(macro)-- label
 
 - [x] Comentar código EM PROGRESSO  
 
-- [ ]  Traduzir para sintaxe gas
-
-
 ### No arquivo projeto_lm.c:
 
-- [ ] Chamar código assembly com sintaxe gas (.s)
+- [ ] Chamar código assembly com sintaxe gas (.s) opcional
 
 ### Testes realizados no arquivo .asm:
 
