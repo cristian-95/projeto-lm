@@ -1,8 +1,5 @@
 /* PROJETO FINAL DE LINGUAGENS DE MONTAGEM - 2022
  * Grupo 3: 4(A x B) retornando o maior valor da diagonal principal.
- *  GABRIEL FRANCISCO HABERMANN
- *  CRISTIAN SANTOS DE CASTRO
- *  IGNACIO ALFREDO SAVI GUALCO
  */
 #include<stdio.h>
 #include<stdlib.h>
